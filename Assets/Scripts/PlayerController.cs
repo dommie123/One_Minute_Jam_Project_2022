@@ -5,17 +5,24 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public bool IsInteracting {get; private set;}
-    public List<string> ingredients;
 
     [SerializeField] private float moveSpeed;
+    [SerializeField] private UI_InventoryBehavior uiInventory;
     private Rigidbody2D body;
+    private Inventory inventory;
 
     // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
-        ingredients = new List<string>();
         IsInteracting = false;
+
+        inventory = new Inventory();
+        uiInventory.SetInventory(inventory);
+
+        IngredientBehavior.SpawnIngredient(new Vector3(5, 5), new Item {itemType = Item.ItemType.Milk, amount = 1});
+        IngredientBehavior.SpawnIngredient(new Vector3(-5, 5), new Item {itemType = Item.ItemType.CoffeeBeans, amount = 1});
+        IngredientBehavior.SpawnIngredient(new Vector3(5, 0), new Item {itemType = Item.ItemType.GroundCoffee, amount = 1});
     }
 
     // Update is called once per frame1
@@ -30,7 +37,13 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log($"{other.gameObject.name} Grabbed");
 
-            ingredients.Add(other.gameObject.name);
+            IngredientBehavior ingredient = other.GetComponent<IngredientBehavior>();
+            if (ingredient != null)
+            {
+                inventory.AddItem(ingredient.GetItem());
+            }
+
+            Destroy(other.gameObject);
         }
     }
 
