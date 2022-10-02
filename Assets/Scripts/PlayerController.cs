@@ -17,8 +17,9 @@ public class PlayerController : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         IsInteracting = false;
 
-        inventory = new Inventory();
+        inventory = new Inventory(UseItem);
         uiInventory.SetInventory(inventory);
+        uiInventory.SetPlayerController(this);
 
         IngredientBehavior.SpawnIngredient(new Vector3(5, 5), new Item {itemType = Item.ItemType.Milk, amount = 1});
         IngredientBehavior.SpawnIngredient(new Vector3(-5, 5), new Item {itemType = Item.ItemType.CoffeeBeans, amount = 1});
@@ -47,6 +48,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public Vector3 GetPosition() 
+    {
+        return this.transform.position;
+    }
+
     private void UpdatePlayerInputs() 
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
@@ -55,5 +61,19 @@ public class PlayerController : MonoBehaviour
         body.velocity = new Vector2(horizontal * moveSpeed, vertical * moveSpeed);
 
         IsInteracting = Input.GetKey(KeyCode.E);
+    }
+
+    private void UseItem(Item item)
+    {
+        switch (item.itemType) {
+            case Item.ItemType.Torch: 
+                // TODO spawn torch and light the area
+                Debug.Log("Used Torch!");
+                inventory.RemoveItem(item);
+                break;
+            default: 
+                Debug.Log("???")
+                break;
+        }
     }
 }

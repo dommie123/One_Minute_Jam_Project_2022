@@ -13,6 +13,14 @@ public class IngredientBehavior : MonoBehaviour
         return ingredient;
     }
 
+    public static IngredientBehavior DropItem(Vector3 dropPosition, Item item)
+    {
+        // Vector3 forwardDirection = dropPosition.forward;
+        IngredientBehavior ingredient = SpawnIngredient(dropPosition + Vector3.right * 2f, item);
+
+        return ingredient;
+    }
+
     private Item item;
     private SpriteRenderer spriteRenderer;
 

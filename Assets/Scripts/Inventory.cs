@@ -8,22 +8,29 @@ public class Inventory
     public event EventHandler OnItemListChanged;
 
     private List<Item> itemList;
+    private Action<Item> useItemAction;
 
-    public Inventory()
+    public Inventory(Action<Item> useItemAction)
     {
         itemList = new List<Item>();
-
-        // Debug.Log("Inventory");
-        // AddItem(new Item {itemType = Item.ItemType.Milk, amount = 1});
-        // AddItem(new Item {itemType = Item.ItemType.Torch, amount = 1});
-        // AddItem(new Item {itemType = Item.ItemType.CoffeeBeans, amount = 1});
-        // Debug.Log(itemList.Count);
+        this.useItemAction = useItemAction;
     }
 
     public void AddItem(Item item)
     {
         itemList.Add(item);
         OnItemListChanged?.Invoke(this, EventArgs.Empty);
+    }
+
+    public void RemoveItem(Item item)
+    {
+        itemList.Remove(item);
+        OnItemListChanged?.Invoke(this, EventArgs.Empty);
+    }
+
+    public void UseItem(Item item)
+    {
+        useItemAction(item);
     }
 
     public List<Item> GetItemList()

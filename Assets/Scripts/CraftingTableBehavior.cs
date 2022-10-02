@@ -6,6 +6,7 @@ public class CraftingTableBehavior : MonoBehaviour
 {
     public PlayerController player;
     public GameObject craftingUI;
+    public GameObject hud;
 
     // Update is called once per frame
     void Update()
@@ -15,6 +16,7 @@ public class CraftingTableBehavior : MonoBehaviour
         if (playerIsInRange && player.IsInteracting)
         {
             craftingUI.SetActive(true);
+            hud.SetActive(false);
         }
     }    
 }

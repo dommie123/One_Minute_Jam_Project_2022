@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3836147650324001454, guid: c4a8d4e371148014ab3847a8b6774463, type: 3}
       propertyPath: m_Name
-      value: Test Item Slot (Small)
+      value: 'Test Ingredient Slot '
       objectReference: {fileID: 0}
     - target: {fileID: 6278496069477613833, guid: c4a8d4e371148014ab3847a8b6774463, type: 3}
       propertyPath: m_Pivot.x
@@ -144,7 +144,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6278496069477613833, guid: c4a8d4e371148014ab3847a8b6774463, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6278496069477613833, guid: c4a8d4e371148014ab3847a8b6774463, type: 3}
       propertyPath: m_AnchorMax.x
@@ -224,6 +224,11 @@ PrefabInstance:
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6278496069477613833, guid: c4a8d4e371148014ab3847a8b6774463, type: 3}
   m_PrefabInstance: {fileID: 322668833}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &641034555 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2443682366906568814, guid: 7db20c7379920e041b6219e82886d47c, type: 3}
+  m_PrefabInstance: {fileID: 2443682367041851252}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &663086736
 GameObject:
@@ -433,7 +438,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2443682366906568810, guid: 7db20c7379920e041b6219e82886d47c, type: 3}
   m_PrefabInstance: {fileID: 2443682367041851252}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 641034555}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6285cd1699da0b14b9d679332d559f1b, type: 3}
@@ -814,8 +819,8 @@ RectTransform:
   - {fileID: 794868959}
   - {fileID: 7331896109508306812}
   - {fileID: 375594839269325364}
-  - {fileID: 3936507711213324356}
   - {fileID: 322668834}
+  - {fileID: 3936507711213324356}
   m_Father: {fileID: 1434993272}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -875,6 +880,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   btnExit: {fileID: 794868960}
+  hud: {fileID: 641034555}
 --- !u!1 &1434993268
 GameObject:
   m_ObjectHideFlags: 0
@@ -1077,6 +1083,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 5149141332081471361}
   craftingUI: {fileID: 1433145963}
+  hud: {fileID: 641034555}
 --- !u!61 &1541454198
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1103,6 +1110,32 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &1640165647 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5529457182892238697, guid: 7db20c7379920e041b6219e82886d47c, type: 3}
+  m_PrefabInstance: {fileID: 2443682367041851252}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1640165652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640165647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 602f74cbbbd80034b96f88091a8e7c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverBehaviourType: 0
+  hoverBehaviour_Color_Enter: {r: 0, g: 0, b: 0, a: 0}
+  hoverBehaviour_Color_Exit: {r: 0, g: 0, b: 0, a: 0}
+  hoverBehaviour_Image: {fileID: 0}
+  hoverBehaviour_Sprite_Exit: {fileID: 0}
+  hoverBehaviour_Sprite_Enter: {fileID: 0}
+  hoverBehaviour_Move: 0
+  hoverBehaviour_Move_Amount: {x: 0, y: 0}
+  triggerMouseOutFuncOnClick: 0
 --- !u!1 &1756903801
 GameObject:
   m_ObjectHideFlags: 0
@@ -1506,7 +1539,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6099993977867729285, guid: ff61325a02241c54cb290c243f090dbf, type: 3}
       propertyPath: m_Name
-      value: Test Item Slot
+      value: Test Product Slot
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff61325a02241c54cb290c243f090dbf, type: 3}
@@ -1640,7 +1673,7 @@ GameObject:
   - component: {fileID: 1767476098397404419}
   - component: {fileID: 6003354980792573767}
   m_Layer: 5
-  m_Name: Test Item Slot (2)
+  m_Name: Test Ingredient Slot 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
