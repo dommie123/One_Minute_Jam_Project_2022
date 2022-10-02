@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
         IngredientBehavior.SpawnIngredient(new Vector3(5, 5), new Item {itemType = Item.ItemType.Milk, amount = 1});
         IngredientBehavior.SpawnIngredient(new Vector3(-5, 5), new Item {itemType = Item.ItemType.CoffeeBeans, amount = 1});
         IngredientBehavior.SpawnIngredient(new Vector3(5, 0), new Item {itemType = Item.ItemType.GroundCoffee, amount = 1});
+        IngredientBehavior.SpawnIngredient(new Vector3(3, 0), new Item {itemType = Item.ItemType.Torch, amount = 1});
     }
 
     // Update is called once per frame1
@@ -72,7 +73,7 @@ public class PlayerController : MonoBehaviour
                 inventory.RemoveItem(item);
                 break;
             default: 
-                Debug.Log("???")
+                Debug.Log("???");
                 break;
         }
     }
