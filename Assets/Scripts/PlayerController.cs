@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float moveSpeed;
     [SerializeField] private UI_InventoryBehavior uiInventory;
+    private DialogueTrigger hintTrigger;
     private Rigidbody2D body;
     private Inventory inventory;
 
@@ -20,6 +21,8 @@ public class PlayerController : MonoBehaviour
         inventory = new Inventory(UseItem);
         uiInventory.SetInventory(inventory);
         uiInventory.SetPlayerController(this);
+
+        hintTrigger = GetComponent<DialogueTrigger>();
 
         IngredientBehavior.SpawnIngredient(new Vector3(5, 5), new Item {itemType = Item.ItemType.Milk, amount = 1});
         IngredientBehavior.SpawnIngredient(new Vector3(-5, 5), new Item {itemType = Item.ItemType.CoffeeBeans, amount = 1});
@@ -62,6 +65,11 @@ public class PlayerController : MonoBehaviour
         body.velocity = new Vector2(horizontal * moveSpeed, vertical * moveSpeed);
 
         IsInteracting = Input.GetKey(KeyCode.E);
+
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            hintTrigger.TriggerDialogue();
+        }
     }
 
     private void UseItem(Item item)
