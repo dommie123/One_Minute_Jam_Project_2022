@@ -18,7 +18,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
-        Debug.Log("Starting Hint System...");
+        Time.timeScale = 0;
         dialogueBox.SetActive(true);
 
         sentences.Clear();
@@ -43,9 +43,9 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = sentence;
     }
 
-    void EndDialogue()
+    private void EndDialogue()
     {
-        Debug.Log("End of conversation");
+        Time.timeScale = 1;
         dialogueBox.SetActive(false);
     }
 }
