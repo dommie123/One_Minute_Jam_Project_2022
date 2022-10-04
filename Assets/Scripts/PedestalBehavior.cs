@@ -8,11 +8,13 @@ public class PedestalBehavior : MonoBehaviour
     
     private Item currentItem;
     private DialogueTrigger dialogueTrigger;
+    private GameBehavior game;
 
     private void Awake() 
     {
         currentItem = null;
         dialogueTrigger = GetComponent<DialogueTrigger>();
+        game = FindObjectOfType<GameBehavior>();
     }
 
     // Update is called once per frame
@@ -38,6 +40,7 @@ public class PedestalBehavior : MonoBehaviour
                         StartPedestalDialogue(item);
                         foundItem = true;
                         currentItem = item;
+                        game.FillPedestal();
                         playerInventory.RemoveItem(item);
                         IngredientBehavior.SpawnIngredient(transform.position + Vector3.back, item);
                         break;
