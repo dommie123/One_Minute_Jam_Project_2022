@@ -28,7 +28,6 @@ public class CraftingTableBehavior : MonoBehaviour
                 switch (item.itemType)
                 {
                     case Item.ItemType.Milk:
-                        // TODO dialogue trigger
                         foundItem = true;
                         playerInventory.RemoveItem(item);
                         IngredientBehavior.SpawnIngredient(transform.position + Vector3.up, new Item {itemType = Item.ItemType.WhippedCream, amount = 1});
