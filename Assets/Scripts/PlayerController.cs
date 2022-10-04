@@ -120,7 +120,6 @@ public class PlayerController : MonoBehaviour
                     itemTypesNeeded.Remove("Vanilla Extract");
                     break;
                 default:
-                    //Debug.Log("Unknown item type detected! Please fix the code!");
                     break;
             }
         }
@@ -199,5 +198,10 @@ public class PlayerController : MonoBehaviour
         }
 
         hintTrigger.SetDialogue(newHintDialogue);
+    }
+
+    public Inventory GetInventory()
+    {
+        return inventory;
     }
 }

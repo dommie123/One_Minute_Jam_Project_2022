@@ -15,8 +15,10 @@ public class CraftingTableBehavior : MonoBehaviour
 
         if (playerIsInRange && player.IsInteracting)
         {
-            craftingUI.SetActive(true);
-            hud.SetActive(false);
+            // craftingUI.SetActive(true);
+            // hud.SetActive(false);
+
+            // TODO check for milk and change it to whipped cream
         }
     }    
 }

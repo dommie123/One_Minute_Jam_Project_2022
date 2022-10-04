@@ -15,7 +15,6 @@ public class IngredientBehavior : MonoBehaviour
 
     public static IngredientBehavior DropItem(Vector3 dropPosition, Item item)
     {
-        // Vector3 forwardDirection = dropPosition.forward;
         IngredientBehavior ingredient = SpawnIngredient(dropPosition + Vector3.right * 2f, item);
 
         return ingredient;
@@ -40,13 +39,4 @@ public class IngredientBehavior : MonoBehaviour
     {
         return item;
     }
-
-    // private void OnTriggerEnter2D(Collider2D other) 
-    // {
-    //     if (other.gameObject.tag == "Player")
-    //     {
-    //         Destroy(this.gameObject);
-    //     }
-    // }
-
 }
