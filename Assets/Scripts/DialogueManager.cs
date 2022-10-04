@@ -43,7 +43,7 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = sentence;
     }
 
-    private void EndDialogue()
+    public void EndDialogue()
     {
         Time.timeScale = 1;
         dialogueBox.SetActive(false);

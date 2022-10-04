@@ -10,6 +10,10 @@ public class GameBehavior : MonoBehaviour
     [SerializeField] private PlayerController player;
     [SerializeField] private int emptyPedestalCount;  // Essential for win condition
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject gameOverScreen;
+    [SerializeField] private GameObject congratulationsScreen;
+    [SerializeField] private GameObject playerInventory; // Disable this for when player wins/loses
+    [SerializeField] private DialogueManager dialogueManager;
     private bool gameWon;
     private bool gameLost;
     private bool gamePaused;
@@ -31,6 +35,12 @@ public class GameBehavior : MonoBehaviour
         IngredientBehavior.SpawnIngredient(new Vector3(3, 0), new Item {itemType = Item.ItemType.Torch, amount = 1});
     }
 
+    private void Awake() {
+        // TODO intro dialogue
+
+        timer.IsActive = true;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -40,12 +50,14 @@ public class GameBehavior : MonoBehaviour
         if (gameWon)
         {
             timer.IsActive = false;
-            Debug.Log("I won!");
+            congratulationsScreen.SetActive(true);
+            playerInventory.SetActive(false);
         }
 
         if (gameLost)
         {
-            Debug.Log("Game Over!");
+            gameOverScreen.SetActive(true);
+            playerInventory.SetActive(false);
         }
     }
 
@@ -77,6 +89,18 @@ public class GameBehavior : MonoBehaviour
         }
     }
 
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("Main");
+        dialogueManager.EndDialogue();
+    }
+
+    public void ReturnToTitleScreen()
+    {
+        SceneManager.LoadScene("TitleScreen");
+        dialogueManager.EndDialogue();
+    }
+
     private void CheckWinCondition()
     {
         gameWon = emptyPedestalCount == 0 && !gameLost;
@@ -92,3 +116,5 @@ public class GameBehavior : MonoBehaviour
         gameLost = timer.timeLeft <= 0 && !gameWon;
     }
 }
+
+
