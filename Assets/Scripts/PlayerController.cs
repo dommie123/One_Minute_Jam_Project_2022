@@ -12,26 +12,20 @@ public class PlayerController : MonoBehaviour
     private DialogueTrigger hintTrigger;
     private Rigidbody2D body;
     private Inventory inventory;
+    private GameBehavior game;
 
     // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
         IsInteracting = false;
+        game = FindObjectOfType<GameBehavior>();
 
         inventory = new Inventory(UseItem);
         uiInventory.SetInventory(inventory);
         uiInventory.SetPlayerController(this);
 
         hintTrigger = GetComponent<DialogueTrigger>();
-
-        IngredientBehavior.SpawnIngredient(new Vector3(5, 5), new Item {itemType = Item.ItemType.Milk, amount = 1});
-        IngredientBehavior.SpawnIngredient(new Vector3(-5, 5), new Item {itemType = Item.ItemType.CoffeeBeans, amount = 1});
-        IngredientBehavior.SpawnIngredient(new Vector3(5, 0), new Item {itemType = Item.ItemType.GroundCoffee, amount = 1});
-        IngredientBehavior.SpawnIngredient(new Vector3(7, 0), new Item {itemType = Item.ItemType.VanillaExtract, amount = 1});
-        IngredientBehavior.SpawnIngredient(new Vector3(4, 1), new Item {itemType = Item.ItemType.WhippedCream, amount = 1});
-        IngredientBehavior.SpawnIngredient(new Vector3(4, -3), new Item {itemType = Item.ItemType.Pumpkin, amount = 1});
-        IngredientBehavior.SpawnIngredient(new Vector3(3, 0), new Item {itemType = Item.ItemType.Torch, amount = 1});
     }
 
     // Update is called once per frame1
@@ -74,6 +68,11 @@ public class PlayerController : MonoBehaviour
         {
             SetNextHint();
             hintTrigger.TriggerDialogue();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            game.PauseGame();
         }
     }
 
