@@ -19,6 +19,27 @@ public class CraftingTableBehavior : MonoBehaviour
             // hud.SetActive(false);
 
             // TODO check for milk and change it to whipped cream
+            Inventory playerInventory = player.GetInventory();
+            List<Item> playerItems = playerInventory.GetItemList();
+
+            foreach (Item item in playerItems)
+            {
+                bool foundItem = false;
+                switch (item.itemType)
+                {
+                    case Item.ItemType.Milk:
+                        // TODO dialogue trigger
+                        foundItem = true;
+                        playerInventory.RemoveItem(item);
+                        IngredientBehavior.SpawnIngredient(transform.position + Vector3.up, new Item {itemType = Item.ItemType.WhippedCream, amount = 1});
+                        break;
+                    default:
+                        break;
+                }
+
+                if (foundItem)
+                    break;
+            }
         }
     }    
 }
