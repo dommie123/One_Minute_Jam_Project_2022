@@ -2,11 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CraftingTableBehavior : MonoBehaviour
+public class CowBehavior : MonoBehaviour
 {
     public PlayerController player;
-    public GameObject craftingUI;
-    public GameObject hud;
 
     // Update is called once per frame
     void Update()
@@ -15,29 +13,38 @@ public class CraftingTableBehavior : MonoBehaviour
 
         if (playerIsInRange && player.IsInteracting)
         {
-            // craftingUI.SetActive(true);
-            // hud.SetActive(false);
-
             Inventory playerInventory = player.GetInventory();
             List<Item> playerItems = playerInventory.GetItemList();
+            bool foundItem = false;
+
+            if (playerItems.Count <= 0)
+            {
+                IngredientBehavior.SpawnIngredient(transform.position + Vector3.down, new Item {itemType = Item.ItemType.Milk, amount = 1});
+                return;
+            }
 
             foreach (Item item in playerItems)
             {
-                bool foundItem = false;
                 switch (item.itemType)
                 {
                     case Item.ItemType.Milk:
                         foundItem = true;
-                        playerInventory.RemoveItem(item);
-                        IngredientBehavior.SpawnIngredient(transform.position + Vector3.up, new Item {itemType = Item.ItemType.WhippedCream, amount = 1});
+                        // TODO dialogue trigger
                         break;
                     default:
                         break;
                 }
 
                 if (foundItem)
+                {
                     break;
+                }
+            }
+
+            if (!foundItem)
+            {
+                IngredientBehavior.SpawnIngredient(transform.position + Vector3.down, new Item {itemType = Item.ItemType.Milk, amount = 1});
             }
         }
-    }    
+    }  
 }

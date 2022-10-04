@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
 
         body.velocity = new Vector2(horizontal * moveSpeed, vertical * moveSpeed);
 
-        IsInteracting = Input.GetKey(KeyCode.E);
+        IsInteracting = Input.GetKeyDown(KeyCode.E);
 
         if (Input.GetKeyDown(KeyCode.H))
         {
