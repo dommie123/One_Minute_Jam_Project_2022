@@ -42,7 +42,7 @@ public class PedestalBehavior : MonoBehaviour
                         currentItem = item;
                         game.FillPedestal();
                         playerInventory.RemoveItem(item);
-                        IngredientBehavior.SpawnIngredient(transform.position + Vector3.back, item);
+                        IngredientBehavior.SpawnIngredient(transform.position + (Vector3.back / 10), item);
                         break;
                     default:
                         StartPedestalDialogue();
