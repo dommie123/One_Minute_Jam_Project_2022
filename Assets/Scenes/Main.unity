@@ -3352,13 +3352,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pfIngredient: {fileID: 1193745082717707582, guid: 71834493d63351941ad5cd1a69b189da, type: 3}
-  milkSprite: {fileID: 21300000, guid: 4e6ffbd5d19fa224fb79be9aa6a5fd8f, type: 3}
-  pumpkinSprite: {fileID: 21300000, guid: a68665c659a9a524a8c46cc9e5b6e2eb, type: 3}
-  coffeeBeansSprite: {fileID: 21300000, guid: 7718c8a35393fcc4a81c21097bafbfa2, type: 3}
-  vanillaSprite: {fileID: 21300000, guid: 25664475400da4740a8da9d146621c1a, type: 3}
+  milkSprite: {fileID: 21300000, guid: be9fbb9b3e55109439530ddec8716d82, type: 3}
+  pumpkinSprite: {fileID: 21300000, guid: c771999413c2f784ca0cf8be324517e8, type: 3}
+  coffeeBeansSprite: {fileID: 21300000, guid: 8bc8a394a159cfe45a07cbf5a6eb02ba, type: 3}
+  vanillaSprite: {fileID: 21300000, guid: 5bf58c2ff86e1d24798c5846ba3ebece, type: 3}
   torchSprite: {fileID: 21300000, guid: e1012bda9ad02d546b12210ce552e941, type: 3}
-  whippedCreamSprite: {fileID: 21300000, guid: 88d289f5ccb5b9946a72efff3e2e9b9e, type: 3}
-  coffeeSprite: {fileID: 21300000, guid: f939e7705e4e2424c8048210671476e5, type: 3}
+  whippedCreamSprite: {fileID: 21300000, guid: d09a2068322f39d4f878205fc4a64be9, type: 3}
+  coffeeSprite: {fileID: 21300000, guid: 8bc8a394a159cfe45a07cbf5a6eb02ba, type: 3}
 --- !u!4 &1756903803
 Transform:
   m_ObjectHideFlags: 0
