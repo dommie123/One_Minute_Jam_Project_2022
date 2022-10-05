@@ -10,8 +10,7 @@ public class DialogueManager : MonoBehaviour
     public TMP_Text dialogueText;
     public GameObject dialogueBox;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake() 
     {
         sentences = new Queue<string>();
     }

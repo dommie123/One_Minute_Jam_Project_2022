@@ -147,7 +147,7 @@ public class PlayerController : MonoBehaviour
                 newHintDialogue = new Dialogue {
                     sentences = new string[] {
                         "Oh yeah, I just remembered I was a dairy farmer!",
-                        "I should be able to get some milk from these cows over yonder."
+                        "I should be able to get some milk from these cows to the northwest."
                     }
                 };
                 break;
@@ -155,7 +155,7 @@ public class PlayerController : MonoBehaviour
                 newHintDialogue = new Dialogue {
                     sentences = new string[] {
                         "Oh yeah, I just remembered I was also a pumpkin farmer!",
-                        "That pumpkin patch over yonder should have what I need."
+                        "That pumpkin patch just north should have what I need."
                     }
                 };
                 break;
@@ -163,8 +163,8 @@ public class PlayerController : MonoBehaviour
                 newHintDialogue = new Dialogue {
                     sentences = new string[] {
                         "Hmm, what else did that demon say I needed?",
-                        "Oh yeah, some coffee!",
-                        "I should have some still in my kitchen!"
+                        "Oh yeah, some coffee beans!",
+                        "I should have some still in my greenhouse to the west!"
                     }
                 };
                 break;
@@ -183,7 +183,7 @@ public class PlayerController : MonoBehaviour
                     sentences = new string[] {
                         "Oh yeah, I just remembered I know a vanilla farmer!",
                         "Good thing he gave me some of his vanilla extract for ice cream night!",
-                        "I should have some over yonder."
+                        "I should have some in the kitchen."
                     }
                 };
                 break;

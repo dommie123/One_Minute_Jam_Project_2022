@@ -20,6 +20,7 @@ public class GameBehavior : MonoBehaviour
     [SerializeField] private Transform vanillaSpawnPos;
     [SerializeField] private Transform pumpkinSpawnPos;
     [SerializeField] private Button pauseBtn;
+    [SerializeField] private DialogueTrigger introDialogue;
     
     private bool gameWon;
     private bool gameLost;
@@ -31,7 +32,14 @@ public class GameBehavior : MonoBehaviour
         gameWon = false;
         gameLost = false;
         gamePaused = false;
-        // bgm = GetComponent<AudioSource>();
+
+        introDialogue.SetDialogue(new Dialogue {sentences = new string[] {
+            "Dag nabbit! Looks like there's a big scary pumpkin monster just outside my front porch!",
+            "And he looks rabbid too!",
+            "I can hear it moaning something over and over. What was it again? 'Latte'?",
+            "Not sure what that's all about, but I'd better make that thing happy before it eats me and my whole farm.",
+            "Let's start by getting the stuff I need and putting it on those weird pedestals that came out of nowhere."
+        }});
 
         // Spawn ingredients for player to pick up
         // IngredientBehavior.SpawnIngredient(new Vector3(5, 5), new Item {itemType = Item.ItemType.Milk, amount = 1});
@@ -41,12 +49,13 @@ public class GameBehavior : MonoBehaviour
         // IngredientBehavior.SpawnIngredient(new Vector3(4, 1), new Item {itemType = Item.ItemType.WhippedCream, amount = 1});
         IngredientBehavior.SpawnIngredient(pumpkinSpawnPos.position, new Item {itemType = Item.ItemType.Pumpkin, amount = 1});
         // IngredientBehavior.SpawnIngredient(new Vector3(3, 0), new Item {itemType = Item.ItemType.Torch, amount = 1});
+        introDialogue.TriggerDialogue();
     }
 
-    private void Awake() {
-        // TODO intro dialogue
-
+    private void Awake() 
+    {
         timer.IsActive = true;
+
         bgm.Play();
     }
 
