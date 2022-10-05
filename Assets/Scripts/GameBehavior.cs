@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameBehavior : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class GameBehavior : MonoBehaviour
     [SerializeField] private Transform beansSpawnPos;
     [SerializeField] private Transform vanillaSpawnPos;
     [SerializeField] private Transform pumpkinSpawnPos;
+    [SerializeField] private Button pauseBtn;
     
     private bool gameWon;
     private bool gameLost;
@@ -89,12 +91,14 @@ public class GameBehavior : MonoBehaviour
             Time.timeScale = 0f;
             timer.IsActive = false;
             pauseMenu.SetActive(true);
+            pauseBtn.transform.GetChild(0).GetComponent<Image>().sprite = UI_Assets.instance.playBtnSprite;
         }
         else
         {
             Time.timeScale = 1f;
             timer.IsActive = true;
             pauseMenu.SetActive(false);
+            pauseBtn.transform.GetChild(0).GetComponent<Image>().sprite = UI_Assets.instance.pauseBtnSprite;
         }
     }
 
