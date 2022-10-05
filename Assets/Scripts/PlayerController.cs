@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
             if (ingredient != null)
             {
                 inventory.AddItem(ingredient.GetItem());
+                ingredient.PlaySFX();
             }
 
             Destroy(other.gameObject);

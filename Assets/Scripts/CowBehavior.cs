@@ -5,6 +5,7 @@ using UnityEngine;
 public class CowBehavior : MonoBehaviour
 {
     public PlayerController player;
+    public AudioSource sfx;
 
     // Update is called once per frame
     void Update()
@@ -19,7 +20,7 @@ public class CowBehavior : MonoBehaviour
 
             if (playerItems.Count <= 0)
             {
-                IngredientBehavior.SpawnIngredient(transform.position + Vector3.down, new Item {itemType = Item.ItemType.Milk, amount = 1});
+                GatherMilk();
                 return;
             }
 
@@ -43,8 +44,14 @@ public class CowBehavior : MonoBehaviour
 
             if (numMilkBuckets < 2)
             {
-                IngredientBehavior.SpawnIngredient(transform.position + Vector3.down, new Item {itemType = Item.ItemType.Milk, amount = 1});
+                GatherMilk();
             }
         }
+    }
+
+    private void GatherMilk()
+    {
+        IngredientBehavior.SpawnIngredient(transform.position + Vector3.down, new Item {itemType = Item.ItemType.Milk, amount = 1});
+        sfx.Play();
     }  
 }

@@ -112,7 +112,6 @@ public class GameBehavior : MonoBehaviour
 
     private void CheckWinCondition()
     {
-        Debug.Log(emptyPedestalCount);
         gameWon = emptyPedestalCount == 0 && !gameLost;
     }
 

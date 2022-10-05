@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class IngredientBehavior : MonoBehaviour
 {
+    public AudioSource sfx;
+
     public static IngredientBehavior SpawnIngredient(Vector3 position, Item item) {
-        Debug.Log(ItemAssets.instance);
         Transform transform = Instantiate(ItemAssets.instance.pfIngredient, position, Quaternion.identity);
 
         IngredientBehavior ingredient = transform.GetComponent<IngredientBehavior>();
@@ -39,5 +40,10 @@ public class IngredientBehavior : MonoBehaviour
     public Item GetItem()
     {
         return item;
+    }
+
+    public void PlaySFX()
+    {
+        sfx.Play();
     }
 }

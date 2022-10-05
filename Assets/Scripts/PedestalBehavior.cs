@@ -5,6 +5,7 @@ using UnityEngine;
 public class PedestalBehavior : MonoBehaviour
 {
     public PlayerController player;
+    public AudioSource sfx;
     
     private Item currentItem;
     private DialogueTrigger dialogueTrigger;
@@ -61,6 +62,7 @@ public class PedestalBehavior : MonoBehaviour
 
     private void StartPedestalDialogue(Item item)
     {
+        sfx.Play();
         dialogueTrigger.SetDialogue(new Dialogue {sentences = new string[] {
             $"Placed the {GetItemTypeAsString(item)}."
         }});
