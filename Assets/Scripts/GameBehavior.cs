@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameBehavior : MonoBehaviour
 {
     public TimerBehavior timer;
+    public AudioSource bgm;
 
     [SerializeField] private PlayerController player;
     [SerializeField] private int emptyPedestalCount;  // Essential for win condition
@@ -28,6 +29,7 @@ public class GameBehavior : MonoBehaviour
         gameWon = false;
         gameLost = false;
         gamePaused = false;
+        // bgm = GetComponent<AudioSource>();
 
         // Spawn ingredients for player to pick up
         // IngredientBehavior.SpawnIngredient(new Vector3(5, 5), new Item {itemType = Item.ItemType.Milk, amount = 1});
@@ -43,6 +45,7 @@ public class GameBehavior : MonoBehaviour
         // TODO intro dialogue
 
         timer.IsActive = true;
+        bgm.Play();
     }
 
     // Update is called once per frame
@@ -56,12 +59,14 @@ public class GameBehavior : MonoBehaviour
             timer.IsActive = false;
             congratulationsScreen.SetActive(true);
             playerInventory.SetActive(false);
+            bgm.Stop();
         }
 
         if (gameLost)
         {
             gameOverScreen.SetActive(true);
             playerInventory.SetActive(false);
+            bgm.Stop();
         }
     }
 
@@ -107,6 +112,7 @@ public class GameBehavior : MonoBehaviour
 
     private void CheckWinCondition()
     {
+        Debug.Log(emptyPedestalCount);
         gameWon = emptyPedestalCount == 0 && !gameLost;
     }
 
