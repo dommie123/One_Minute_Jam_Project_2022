@@ -29,7 +29,7 @@ public class CraftingTableBehavior : MonoBehaviour
                     case Item.ItemType.Milk:
                         foundItem = true;
                         playerInventory.RemoveItem(item);
-                        IngredientBehavior.SpawnIngredient(transform.position + Vector3.up, new Item {itemType = Item.ItemType.WhippedCream, amount = 1});
+                        IngredientBehavior.SpawnIngredient(transform.position + Vector3.down, new Item {itemType = Item.ItemType.WhippedCream, amount = 1});
                         break;
                     default:
                         break;

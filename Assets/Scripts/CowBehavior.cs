@@ -15,7 +15,7 @@ public class CowBehavior : MonoBehaviour
         {
             Inventory playerInventory = player.GetInventory();
             List<Item> playerItems = playerInventory.GetItemList();
-            bool foundItem = false;
+            int numMilkBuckets = 0;
 
             if (playerItems.Count <= 0)
             {
@@ -28,20 +28,20 @@ public class CowBehavior : MonoBehaviour
                 switch (item.itemType)
                 {
                     case Item.ItemType.Milk:
-                        foundItem = true;
+                        numMilkBuckets++;
                         // TODO dialogue trigger
                         break;
                     default:
                         break;
                 }
 
-                if (foundItem)
+                if (numMilkBuckets >= 2)
                 {
                     break;
                 }
             }
 
-            if (!foundItem)
+            if (numMilkBuckets < 2)
             {
                 IngredientBehavior.SpawnIngredient(transform.position + Vector3.down, new Item {itemType = Item.ItemType.Milk, amount = 1});
             }
