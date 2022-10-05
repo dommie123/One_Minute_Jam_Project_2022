@@ -4,20 +4,39 @@ using UnityEngine;
 
 public class IngredientBehavior : MonoBehaviour
 {
-    // public string name;
+    public static IngredientBehavior SpawnIngredient(Vector3 position, Item item) {
+        Transform transform = Instantiate(ItemAssets.instance.pfIngredient, position, Quaternion.identity);
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+        IngredientBehavior ingredient = transform.GetComponent<IngredientBehavior>();
+        ingredient.SetItem(item);
+
+        return ingredient;
     }
 
-    private void OnTriggerEnter2D(Collider2D other) 
+    public static IngredientBehavior DropItem(Vector3 dropPosition, Item item)
     {
-        if (other.gameObject.tag == "Player")
-        {
-            Destroy(this.gameObject);
-        }
+        IngredientBehavior ingredient = SpawnIngredient(dropPosition + Vector3.right * 2f, item);
+
+        return ingredient;
     }
 
+    private Item item;
+    private SpriteRenderer spriteRenderer;
+
+    private void Awake() 
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    public void SetItem(Item item)
+    {
+        this.item = item;
+        spriteRenderer.drawMode = SpriteDrawMode.Sliced;
+        spriteRenderer.sprite = item.GetSprite();
+    }
+
+    public Item GetItem()
+    {
+        return item;
+    }
 }
